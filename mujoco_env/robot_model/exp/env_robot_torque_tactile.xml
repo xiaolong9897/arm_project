@@ -1,0 +1,83 @@
+<?xml version="1.0" ?>
+<mujoco model="robot_arm_torque">
+    <compiler angle="radian" meshdir="../robot/meshes/" />
+    <size njmax="500" nconmax="100" />
+    
+    <!-- 刚性接触求解器配置 -->
+    <option cone="elliptic" impratio="10" viscosity="0.1" timestep="0.001" iterations="150" solver="Newton" tolerance="1e-10">
+        <flag contact="enable" override="enable"/>
+    </option>
+    
+    <visual>
+        <global offwidth="1920" offheight="1080"/>
+        <headlight ambient="0.16 0.16 0.16" diffuse="0.42 0.42 0.40" specular="0.32 0.32 0.32"/>
+        <rgba haze="0.93 0.95 0.98 1"/>
+        <quality shadowsize="16384"/>
+        <map znear="0.001"/>
+    </visual>
+
+    <!-- 禁用机器人自碰撞 -->
+    <contact>
+        <exclude body1="base" body2="Link1"/>
+        <exclude body1="base" body2="Link2"/>
+        <exclude body1="base" body2="Link3"/>
+        <exclude body1="base" body2="Link4"/>
+        <exclude body1="base" body2="Link5"/>
+        <exclude body1="base" body2="Link6"/>
+        <exclude body1="Link1" body2="Link2"/>
+        <exclude body1="Link1" body2="Link3"/>
+        <exclude body1="Link2" body2="Link3"/>
+        <exclude body1="Link2" body2="Link4"/>
+        <exclude body1="Link3" body2="Link4"/>
+        <exclude body1="Link3" body2="Link5"/>
+        <exclude body1="Link4" body2="Link5"/>
+        <exclude body1="Link4" body2="Link6"/>
+        <exclude body1="Link5" body2="Link6"/>
+    </contact>
+
+    <!-- 加载环境基本配置 -->
+    <include file="env_robot_assets.xml"></include>
+
+    <!-- 加载机械臂驱动与关节传感器（力矩控制版本） -->
+    <include file="../robot/robot_arm/robot_arm620_torque.xml"></include>
+
+    <!-- 加载 Robotiq-2f-85 v4 夹爪与基本配置、驱动 -->
+    <include file="../robot/robot_iq/robotiq-2f-assets.xml"></include>
+
+    <!-- 加载触觉力传感器定义（10x5x2） -->
+    <include file="../robot/robot_iq/tactile_force_sensors_10x5.xml"></include>
+
+    <!-- 加载 实验环境材料 -->
+    <include file="../env/exp_assets.xml"></include>
+
+    <!-- 加载 实验室环境材质 -->
+    <include file="../env/env_assets.xml"></include>
+
+    <!-- 机器人本体 -->
+    <worldbody>
+        <!-- 默认光照（单灯） -->
+        <light directional="true" diffuse="0.52 0.52 0.48" specular="0.28 0.28 0.28" pos="1.2 -0.8 4.8" dir="-0.20 0.10 -1"/>
+
+        <!-- 加载实验室环境 -->
+        <include file="../env/env_worldbody.xml"></include>
+
+        <!-- RGBD相机 2: 固定在机器人正前方的外部观察相机 -->
+        <body name="external_camera_mount" pos="1.6 0.0 1.6" euler="0.0 -0.6 -3.1415926">
+            <camera name="rgbd_camera_external" pos="0 0 0" euler="0 -1.57079632679 -1.57079632679" fovy="70" mode="fixed"/>
+            <geom name="camera_marker" type="box" size="0.01 0.01 0.01" rgba="0 0 1 0.5"/>
+        </body>
+
+        <!-- /ee_target 调试可视化：暂时隐藏，保留 mocap body 供目标位姿逻辑使用 -->
+        <body name="ee_pose_target_marker" mocap="true" pos="0 0 1.0">
+            <site name="ee_pose_target_site" pos="0 0 0" size="0.025" rgba="1 0.2 0.1 0" type="sphere"/>
+            <geom name="ee_pose_target_axis_x" type="capsule" pos="0.04 0 0" quat="0.70710678 0 0.70710678 0" size="0.006 0.04" rgba="1 0.15 0.15 0" contype="0" conaffinity="0"/>
+            <geom name="ee_pose_target_axis_y" type="capsule" pos="0 0.04 0" quat="0.70710678 -0.70710678 0 0" size="0.006 0.04" rgba="0.15 1 0.15 0" contype="0" conaffinity="0"/>
+            <geom name="ee_pose_target_axis_z" type="capsule" pos="0 0 0.04" size="0.006 0.04" rgba="0.15 0.45 1 0" contype="0" conaffinity="0"/>
+        </body>
+
+        <!-- 加载机器人运动链（触觉版夹爪） -->
+        <include file="../robot/robot_arm/robot_arm620_robot_iq_tactile_sensor.xml"></include>
+
+    </worldbody>
+
+</mujoco>

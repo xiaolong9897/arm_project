@@ -27,7 +27,16 @@ dataset/
 # MuJoCo
 *.stl
 *.obj
-!**/meshes/*.stl  # 如果你 mesh 想版本控制就取消这行注释
+# 仿真模型加载所需的网格资源必须随代码版本管理。
+!mujoco_env/robot_model/robot/meshes/**/*.stl
+!mujoco_env/robot_model/robot/robotiq_2f85_v4/assets/**/*.stl
+MUJOCO_LOG.TXT
+
+# 本地录制与调试产物
+rosbag_archive/
+test_command/
+*.db3
+*.deb
 
 # ROS 2
 build/

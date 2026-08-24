@@ -1,0 +1,139 @@
+main 
+cd /home/xiaoman/study/Arm_Project
+source /opt/ros/humble/setup.bash
+/usr/bin/python3 mujoco_env/main/main.py
+
+
+
+cd /home/xiaoman/study/Arm_Project/mujoco_env/main/xiaoman
+source /opt/ros/humble/setup.bash
+/usr/bin/python3 xm.py
+
+cd /home/xiaoman/study/Arm_Project
+source /home/xiaoman/study/Arm_Project/.venv_train/bin/activate
+source /opt/ros/humble/setup.bash
+/usr/bin/python3 mujoco_env/main/xiaoman/run_template_pregrasp_planner.py
+
+cd /home/xiaoman/study/Arm_Project
+source /home/xiaoman/study/Arm_Project/.venv_train/bin/activate
+source /opt/ros/humble/setup.bash
+/usr/bin/python3 mujoco_env/main/xiaoman/run_template_pregrasp_planner.py \
+  --observe-ignore-all-object-collisions \
+  --observe-top-extra-height-m 0.16 \
+  --observe-side-extra-distance-m 0.14 \
+  --observe-extra-lift-m 0.10 \
+  --observe-min-joint-limit-margin-rad 0.02
+
+
+cd /home/xiaoman/study/Arm_Project
+source /opt/ros/humble/setup.bash
+ros2 topic echo /information_dic --full-length --once
+
+
+
+
+
+
+物体温度识别
+cd /home/xiaoman/study/Arm_Project
+source /opt/ros/humble/setup.bash
+/usr/bin/python3 mujoco_env/main/xiaoman/capture_object_view_topics.py
+
+目标盘温度打印
+
+cd /home/xiaoman/study/Arm_Project
+source /opt/ros/humble/setup.bash
+/usr/bin/python3 mujoco_env/main/xiaoman/capture_ee_target_plate_images.py
+
+
+
+
+手柄控制
+cd ~/study/Arm_Project
+source /opt/ros/humble/setup.bash
+/usr/bin/python3 mujoco_env/tools/gamepad_joint_target_publisher.py --device /dev/input/js0 --print
+
+
+
+cd /home/xiaoman/study/Arm_Project
+source /opt/ros/humble/setup.bash
+/usr/bin/python3 mujoco_env/main/xiaoman/coarse_grasp_data_collector.py
+
+
+
+训练环境
+cd /home/xiaoman/study/Arm_Project
+source .venv_train/bin/activate
+
+开始训练
+python mujoco_env/main/xiaoman/train_coarse_grasp_bc.py \
+  --epochs 50 \
+  --batch-size 16
+
+watch -n 1 nvidia-smi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

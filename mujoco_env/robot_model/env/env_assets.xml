@@ -1,0 +1,18 @@
+<mujocoinclude>
+    <asset>
+        <texture name="lab_floor_tex" type="2d" file="../assets/marble.png" height="512" width="512"/>
+        <material name="lab_floor_mat" texture="lab_floor_tex" texrepeat="4 4" specular="0.1" shininess="0.2"/>
+
+        <texture name="desktop_tex" type="2d" file="../assets/desktop.png" height="512" width="512"/>
+        <material name="desktop_mat" texture="desktop_tex" texrepeat="1 1" specular="0.1" shininess="0.2"/>
+
+        <texture name="white_wall_tex" type="2d" file="../assets/white_wall.png" height="512" width="512"/>
+        <material name="white_wall_mat" texture="white_wall_tex" texrepeat="128 128" specular="0.1" shininess="0.2"/>
+
+        <!-- 额外示例材质：金属、木质、玻璃 -->
+        <texture name="wood_texture" type="2d" file="../assets/wood_grain.png" width="512" height="512"/>
+        <material name="metal_mat" rgba="0.84 0.86 0.88 1" specular="1.45" shininess="0.98" reflectance="10.0"/>
+        <material name="wood_mat" texture="wood_texture" texuniform="true" texrepeat="2 2" rgba="0.86 0.72 0.52 1" specular="0.10" shininess="0.22" reflectance="0.10"/>
+        <material name="glass_mat" rgba="0.9 0.9 0.9 0.5" specular="0.9" shininess="0.9" reflectance="0.9"/>
+    </asset>
+</mujocoinclude>
