@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv*/
+venv/
+*.egg-info/
+dist/
+build/
+
+# PyTorch / 训练产物
+*.pt
+*.pth
+*.ckpt
+checkpoints/
+outputs/
+runs/
+logs/
+wandb/
+
+# 数据集（大文件不要进 Git）
+data/
+dataset/
+*.tar.gz
+*.zip
+
+# MuJoCo
+*.stl
+*.obj
+!**/meshes/*.stl  # 如果你 mesh 想版本控制就取消这行注释
+
+# ROS 2
+build/
+install/
+log/
+*.log
+
+# 系统
+.DS_Store
+*.swp
+*.swo
+
+# 敏感/本地配置
+*.yaml.local
+config/local_*.yaml

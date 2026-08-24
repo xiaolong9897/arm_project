@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="arm620">
+  <link name="world"/>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="-3.493E-05 1.9321E-08 0.041738" rpy="0 0 0"/>
+      <mass value="1.235"/>
+      <inertia ixx="0.00069305" ixy="-2.4629E-09" ixz="-7.7538E-07" iyy="0.00069224" iyz="1.1986E-09" izz="0.00059207"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arm620_description/meshes/arm620/base_link.STL"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arm620_description/meshes/arm620/base_link.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="base_joint" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="Link1">
+    <visual><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://arm620_description/meshes/arm620/Link1.STL"/></geometry></visual>
+    <collision><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://arm620_description/meshes/arm620/Link1.STL"/></geometry></collision>
+  </link>
+  <joint name="joint1" type="revolute">
+    <origin xyz="0 0 0.084" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="Link1"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-2.967" upper="2.967" effort="49" velocity="3.14"/>
+  </joint>
+
+  <link name="Link2">
+    <visual><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://arm620_description/meshes/arm620/Link2.STL"/></geometry></visual>
+    <collision><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://arm620_description/meshes/arm620/Link2.STL"/></geometry></collision>
+  </link>
+  <joint name="joint2" type="revolute">
+    <origin xyz="0 0 0.068718" rpy="1.5708 0 -1.5708"/>
+    <parent link="Link1"/>
+    <child link="Link2"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="-1.5708" upper="1.5708" effort="49" velocity="3.14"/>
+  </joint>
+
+  <link name="Link3">
+    <visual><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://arm620_description/meshes/arm620/Link3.STL"/></geometry></visual>
+    <collision><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://arm620_description/meshes/arm620/Link3.STL"/></geometry></collision>
+  </link>
+  <joint name="joint3" type="revolute">
+    <origin xyz="0 0.30025 0" rpy="-3.1416 0 0"/>
+    <parent link="Link2"/>
+    <child link="Link3"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-1.5708" upper="1.5708" effort="49" velocity="3.14"/>
+  </joint>
+
+  <link name="Link4">
+    <visual><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://arm620_description/meshes/arm620/Link4.STL"/></geometry></visual>
+    <collision><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://arm620_description/meshes/arm620/Link4.STL"/></geometry></collision>
+  </link>
+  <joint name="joint4" type="revolute">
+    <origin xyz="0 -0.15558 3.5E-05" rpy="1.5708 -1.5708 0"/>
+    <parent link="Link3"/>
+    <child link="Link4"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-2.967" upper="2.967" effort="9" velocity="3.14"/>
+  </joint>
+
+  <link name="Link5">
+    <visual><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://arm620_description/meshes/arm620/Link5.STL"/></geometry></visual>
+    <collision><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://arm620_description/meshes/arm620/Link5.STL"/></geometry></collision>
+  </link>
+  <joint name="joint5" type="revolute">
+    <origin xyz="-3.5E-05 1.5362E-05 0.064223" rpy="1.5708 0 0"/>
+    <parent link="Link4"/>
+    <child link="Link5"/>
+    <axis xyz="1 0 0"/>
+    <limit lower="-1.5708" upper="1.5708" effort="9" velocity="3.14"/>
+  </joint>
+
+  <link name="Link6">
+    <visual><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://arm620_description/meshes/arm620/Link6.STL"/></geometry></visual>
+    <collision><origin xyz="0 0 0" rpy="0 0 0"/><geometry><mesh filename="package://arm620_description/meshes/arm620/Link6.STL"/></geometry></collision>
+  </link>
+  <joint name="joint6" type="revolute">
+    <origin xyz="-0.00047523 0.095552 0" rpy="-1.5709 0 0"/>
+    <parent link="Link5"/>
+    <child link="Link6"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-2.967" upper="2.967" effort="9" velocity="3.14"/>
+  </joint>
+
+  <link name="tools_link">
+    <visual>
+      <geometry><sphere radius="0.01"/></geometry>
+      <material name="green"><color rgba="0 1 0 0.6"/></material>
+    </visual>
+    <collision>
+      <geometry><sphere radius="0.01"/></geometry>
+    </collision>
+  </link>
+  <joint name="tools_link_joint" type="fixed">
+    <parent link="Link6"/>
+    <child link="tools_link"/>
+    <origin xyz="0 0 0.13" rpy="0 0 0"/>
+  </joint>
+</robot>

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>arm620_moveit_config</name>
+  <version>0.0.1</version>
+  <description>Minimal MoveIt2 configuration for Arm620.</description>
+  <maintainer email="xiaoman@example.com">xiaoman</maintainer>
+  <license>Proprietary</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>arm620_description</depend>
+  <depend>launch</depend>
+  <depend>launch_ros</depend>
+  <depend>moveit_configs_utils</depend>
+  <depend>moveit_ros_move_group</depend>
+  <depend>moveit_ros_planning_interface</depend>
+  <depend>moveit_ros_visualization</depend>
+  <depend>moveit_setup_assistant</depend>
+  <depend>tf2_ros</depend>
+  <depend>robot_state_publisher</depend>
+  <depend>rviz2</depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

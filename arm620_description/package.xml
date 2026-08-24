@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>arm620_description</name>
+  <version>0.0.1</version>
+  <description>URDF and mesh resources for the Arm620 robot.</description>
+  <maintainer email="xiaoman@example.com">xiaoman</maintainer>
+  <license>Proprietary</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>urdf</exec_depend>
+  <exec_depend>xacro</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
