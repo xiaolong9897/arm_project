@@ -37,6 +37,9 @@ rosbag_archive/
 test_command/
 rgbd_saved_external/
 rgbd_saved_external_verify/
+mujoco_env/main/xiaoman1/images/
+mujoco_env/main/xiaoman1/frame_*.jpg
+simple_2d.png
 *.db3
 *.deb
 
