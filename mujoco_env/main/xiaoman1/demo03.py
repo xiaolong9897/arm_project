@@ -3,6 +3,11 @@ from rclpy.node import Node
 from std_msgs.msg import String
 import json
 
+
+'''
+获取三个物体的绝对坐标
+
+'''
 class SnapshotPrinter(Node):
     def __init__(self):
         super().__init__('snapshot_printer')
@@ -12,9 +17,15 @@ class SnapshotPrinter(Node):
 
     def cb(self, msg): 
         data = json.loads(msg.data)
-        print(json.dumps(data, indent=2, ensure_ascii=False))
+        # print(json.dumps(data, indent=2, ensure_ascii=False))
 
-        data_list=data["movable_objects"];
+        data_list=data["movable_objects"]
+        # print(json.dumps(data_list, indent=2, ensure_ascii=False))
+
+        data_list[0]["position_xyz"][2]+=0.07
+        data_list[1]["position_xyz"][2]+=0.11
+        data_list[2]["position_xyz"][2]+=0.1075
+
         for i in data_list:
             print(i["body_name"],end='\t')
             t_list=i["position_xyz"]

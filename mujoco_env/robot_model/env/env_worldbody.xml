@@ -153,6 +153,10 @@
     </body>
 
     <!-- 三个可移动实验器皿，保留 body 名以兼容 reset / 温度 / 快照逻辑 -->
+    <!-- 
+            玻璃外壁：半径 0.045m（4.5cm），半高 0.07m → 直径 9cm，总高 14cm
+            内部液体：半径 0.043m（4.3cm），半高 0.04m → 直径 8.6cm，液高 8cm
+     -->
     <body name="beaker1" pos="0.2 -0.15 0.98">
       <freejoint/>
       <geom name="beaker1_glass" type="cylinder" pos="0 0 0.07" size="0.045 0.07"
@@ -160,6 +164,14 @@
       <geom name="beaker1_liquid" type="cylinder" pos="0 0 0.045" size="0.043 0.04"
             rgba="0.15 0.55 0.95 0.6" contype="0" conaffinity="0"/>
     </body>
+
+      <!-- 
+            瓶底（最宽处）：半径 0.05m（5cm），半高 0.045m → 直径 10cm，高 9cm
+            瓶身中部：半径 0.035m（3.5cm），半高 0.05m → 直径 7cm，高 10cm
+            瓶颈：半径 0.018m（1.8cm），半高 0.06m → 直径 3.6cm，高 12cm
+            内部液体：半径 0.045m（4.5cm），半高 0.03m → 直径 9cm，液高 6cm 
+      -->
+
 
     <body name="erlenmeyer_flask" pos="0.35 -0.05 0.98">
       <freejoint/>
@@ -172,6 +184,15 @@
       <geom name="flask_liquid" type="cylinder" pos="0 0 0.04" size="0.045 0.03"
             rgba="0.85 0.25 0.65 0.6" contype="0" conaffinity="0"/>
     </body>
+
+
+    <!-- 
+
+            筒身：半径 0.018m（1.8cm），半高 0.11m → 直径 3.6cm，总高 22cm
+            底座：半径 0.04m（4cm），半高 0.01m → 直径 8cm，底座高 2cm
+            内部液体：半径 0.016m（1.6cm），半高 0.06m → 直径 3.2cm，液高 12cm
+     -->
+
 
     <body name="graduated_cylinder" pos="0.05 0.05 0.98">
       <freejoint/>

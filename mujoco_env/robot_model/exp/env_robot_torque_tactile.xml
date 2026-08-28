@@ -62,9 +62,18 @@
         <include file="../env/env_worldbody.xml"></include>
 
         <!-- RGBD相机 2: 固定在机器人正前方的外部观察相机 -->
-        <body name="external_camera_mount" pos="1.6 0.0 1.6" euler="0.0 -0.6 -3.1415926">
-            <camera name="rgbd_camera_external" pos="0 0 0" euler="0 -1.57079632679 -1.57079632679" fovy="70" mode="fixed"/>
-            <geom name="camera_marker" type="box" size="0.01 0.01 0.01" rgba="0 0 1 0.5"/>
+        <body name="external_camera_mount" 
+              pos="1.6 0.0 1.6" 
+              euler="0.0 -0.6 -3.1415926">
+            <camera name="rgbd_camera_external" 
+                    pos="0 0 0" 
+                    euler="0 -1.57079632679 -1.57079632679" 
+                    fovy="70" 
+                    mode="fixed"/>
+            <geom name="camera_marker" 
+                  type="box" 
+                  size="0.01 0.01 0.01" 
+                  rgba="0 0 1 0.5"/>
         </body>
 
         <!-- /ee_target 调试可视化：暂时隐藏，保留 mocap body 供目标位姿逻辑使用 -->

@@ -1,3 +1,14 @@
 {
-    "python-envs.defaultEnvManager": "ms-python.python:system"
+  "python-envs.defaultEnvManager": "ms-python.python:system",
+  "python-envs.defaultPackageManager": "ms-python.python:pip",
+  "python.defaultInterpreterPath": "/usr/bin/python3",
+
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}/mujoco_env/envs",
+    "${workspaceFolder}/mujoco_env/sensors",
+    "${workspaceFolder}/mujoco_env/robot",
+    "${workspaceFolder}/mujoco_env/main"
+  ],
+
+  "cmake.sourceDirectory": "/home/xiaoman/study/Arm_Project/arm620_description"
 }

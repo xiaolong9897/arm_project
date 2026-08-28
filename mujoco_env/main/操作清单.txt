@@ -4,6 +4,32 @@ source /opt/ros/humble/setup.bash
 /usr/bin/python3 mujoco_env/main/main.py
 
 
+(arm_train) xiaoman@ubuntu:~/study/Arm_Project$ 
+
+
+
+/home/xiaoman/miniconda3/envs/arm_train/bin/python /home/xiaoman/study/Arm_Project/mujoco_env/main/xiaoman1/verify.py
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cd /home/xiaoman/study/Arm_Project/mujoco_env
+/usr/bin/python3 main/main.py --headless
+
+
+
 
 cd /home/xiaoman/study/Arm_Project/mujoco_env/main/xiaoman
 source /opt/ros/humble/setup.bash

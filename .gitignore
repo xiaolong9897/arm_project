@@ -35,8 +35,14 @@ MUJOCO_LOG.TXT
 # 本地录制与调试产物
 rosbag_archive/
 test_command/
+rgbd_saved_external/
+rgbd_saved_external_verify/
 *.db3
 *.deb
+
+# RGBD 保存数据（不上传）
+rgbd_saved_external/
+rgbd_saved_external_verify/
 
 # ROS 2
 build/
